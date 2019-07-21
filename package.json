@@ -1,0 +1,45 @@
+{
+  "name": "toptal-base",
+  "version": "0.0.0",
+  "description": "Toptal project",
+  "main": "index.js",
+  "author": "Jake Coble <jakecoble@users.noreply.github.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "NODE_ENV=development nodemon --ignore src/ --exec babel-node server.js"
+  },
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "connect-session-sequelize": "^6.0.0",
+    "express": "^4.17.1",
+    "express-session": "^1.16.2",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "pg": "^7.11.0",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.10.0",
+    "vue": "^2.6.10"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.0",
+    "@babel/node": "^7.5.0",
+    "@babel/plugin-proposal-class-properties": "^7.5.0",
+    "@babel/preset-env": "^7.5.0",
+    "@babel/register": "^7.4.4",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.0.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-inject-plugin": "^3.0.2",
+    "html-webpack-plugin": "^3.2.0",
+    "nodemon": "^1.19.1",
+    "sqlite3": "^4.0.9",
+    "vue-loader": "^15.7.0",
+    "vue-template-compiler": "^2.6.10",
+    "webpack": "^4.35.2",
+    "webpack-cli": "^3.3.5",
+    "webpack-dev-middleware": "^3.7.0",
+    "webpack-hot-middleware": "^2.25.0",
+    "webpack-merge": "^4.2.1",
+    "webpack-node-externals": "^1.7.2"
+  }
+}
