@@ -46,7 +46,8 @@ app.use(session({
     table: 'Session',
     extendDefaultFields
   }),
-  resave: false
+  resave: false,
+  saveUninitialized: false
 }))
 
 app.use(passport.initialize())
@@ -98,8 +99,4 @@ app.get('/', (req, res) => {
   res.sendFile('index.html')
 })
 
-const PORT = process.env.PORT || 8080
-app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}.`)
-  console.log('Press Ctrl+C to quit.')
-})
+export default app

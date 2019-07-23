@@ -14,7 +14,7 @@ const mailer = nodemailer.createTransport({
     user: process.env.NM_USER,
     pass: process.env.NM_PASS
   },
-  logger: true,
+  logger: false,
   debug: false
 })
 
