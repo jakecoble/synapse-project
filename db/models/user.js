@@ -1,4 +1,5 @@
 import bcrypt from 'bcrypt'
+import crypto from 'crypto'
 import { DataTypes, Model } from 'sequelize'
 
 function hashPassword (user) {
@@ -6,6 +7,12 @@ function hashPassword (user) {
     return bcrypt.hash(user.password, 12)
       .then(hash => user.password = hash)
   }
+}
+
+function genActivationKey (user) {
+  var hash = crypto.createHash('sha1')
+
+  user.activationKey = hash.update(user.email).digest('hex')
 }
 
 class User extends Model {
@@ -23,11 +30,17 @@ class User extends Model {
       validate: {
         len: [8, undefined]
       }
-    }
+    },
+
+    activationKey: DataTypes.STRING,
+    activated: DataTypes.BOOLEAN
   }
 
   static hooks = {
-    beforeCreate: hashPassword,
+    beforeCreate: [
+      hashPassword,
+      genActivationKey
+    ],
     beforeUpdate: hashPassword
   }
 

@@ -1,3 +1,5 @@
+import 'dotenv/config'
+
 import path from 'path'
 import express from 'express'
 import passport from 'passport'
@@ -63,7 +65,11 @@ passport.use(new LocalStrategy({
         } else if (user.validPassword(password)) {
           done(null, user)
         } else {
-          done(null, false, { message: 'Invalid password' })
+          if (user.activated) {
+            done(null, false, { message: 'Invalid password' })
+          } else {
+            done(null, false, { message: 'This account has not yet been activated.' })
+          }
         }
       })
       .catch(err => done(err))
