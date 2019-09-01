@@ -10,18 +10,21 @@
     "test": "NODE_ENV=test mocha --require @babel/register --recursive test/"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "bcrypt": "^3.0.6",
     "connect-session-sequelize": "^6.0.0",
     "dotenv": "^8.0.0",
     "ejs": "^2.6.2",
     "express": "^4.17.1",
     "express-session": "^1.16.2",
+    "lodash": "^4.17.10",
     "nodemailer": "^6.3.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "pg": "^7.11.0",
     "pg-hstore": "^2.3.3",
-    "sequelize": "^5.10.0"
+    "sequelize": "^5.10.0",
+    "synapsenode": "^1.2.2"
   },
   "devDependencies": {
     "@babel/core": "^7.5.0",
