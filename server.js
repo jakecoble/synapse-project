@@ -62,14 +62,14 @@ passport.use(new LocalStrategy({
     })
       .then(user => {
         if (!user) {
-          done(null, false, { message: 'Invalid email' })
+          return done(null, false, { message: 'Invalid email' })
         } else if (user.validPassword(password)) {
-          done(null, user)
+          return done(null, user)
         } else {
           if (user.activated) {
-            done(null, false, { message: 'Invalid password' })
+            return done(null, false, { message: 'Invalid password' })
           } else {
-            done(null, false, { message: 'This account has not yet been activated.' })
+            return done(null, false, { message: 'This account has not yet been activated.' })
           }
         }
       })
@@ -78,16 +78,16 @@ passport.use(new LocalStrategy({
 ))
 
 passport.serializeUser((user, done) => {
-  done(null, user.id)
+  return done(null, user.id)
 })
 
 passport.deserializeUser((id, done) => {
   return User.findByPk(id)
     .then(user => {
       if (user) {
-        done(null, user)
+        return done(null, user)
       } else {
-        done(null, false)
+        return done(null, false)
       }
     })
     .catch(err => done(err))
