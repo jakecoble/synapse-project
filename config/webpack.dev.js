@@ -1,7 +1,7 @@
 const merge = require('webpack-merge')
 const baseConfig = require('./webpack.base.js')
 const webpack = require('webpack')
-const HtmlwebpackInjectPlugin = require('html-webpack-inject-plugin').default
+const HtmlWebpackInjectPlugin = require('html-webpack-inject-plugin').default
 
 module.exports = merge(baseConfig, {
   mode: 'development',
@@ -10,7 +10,7 @@ module.exports = merge(baseConfig, {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
 
-    new HtmlwebpackInjectPlugin({
+    new HtmlWebpackInjectPlugin({
       externals: [{
         tag: 'script',
         attrs: {

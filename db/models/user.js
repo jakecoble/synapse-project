@@ -32,6 +32,11 @@ class User extends Model {
       }
     },
 
+    synapseId: {
+      type: DataTypes.STRING,
+      unique: true
+    },
+
     activationKey: DataTypes.STRING,
     activated: DataTypes.BOOLEAN
   }

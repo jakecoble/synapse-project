@@ -2,7 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  entry: [ './src/app.js' ],
+  entry: [ 'react-hot-loader/patch', './src/app.js' ],
 
   output: {
     path: path.join(__dirname, '../dist'),
@@ -11,7 +11,10 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['.jsx', '.js']
+    extensions: ['.jsx', '.js'],
+    alias: {
+      'react-dom': '@hot-loader/react-dom'
+    }
   },
 
   module: {
@@ -23,10 +26,17 @@ module.exports = {
       },
 
       {
-        test: /\.css$/,
-        exclude: /node_modules/,
+        test: /\.(scss|sass|css)$/,
         use: [
-          'css-loader'
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              sourceMap: true
+            }
+          },
+          'sass-loader'
         ]
       }
     ]
