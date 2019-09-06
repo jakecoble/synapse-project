@@ -3,8 +3,11 @@ import passport from 'passport'
 const router = express.Router()
 
 import users from './users'
+import accounts from './accounts'
 
 router.use('/users', users)
+
+router.use('/accounts', accounts)
 
 router.route('/sessions')
   .post(
