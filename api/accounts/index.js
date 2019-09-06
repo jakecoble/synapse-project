@@ -5,16 +5,34 @@ const router = express.Router()
 
 import synapse from '../synapse'
 
+const normalizeAccountNode = (node) => {
+  return {
+    id: node._id,
+    type: node.type,
+    nickname: node.info.nickname,
+    balance: node.info.balance
+  }
+}
+
 router.route('/')
       .get((req, res) => {
         return synapse.getUser(req.user.synapseId)
                       .then(user => {
-                        return user.getAllUserNodes()
+                        return Promise.all([
+                          user.getAllUserNodes({
+                            type: 'DEPOSIT-US'
+                          }),
+                          user.getAllUserNodes({
+                            type: 'IB-DEPOSIT-US'
+                          })
+                        ])
                       })
-                      .then(({ data }) => {
-                        res.json(data)
+                      .then(results => {
+                        var nodes = results.reduce((acc, curr) => acc = acc.concat(curr.data.nodes), [])
+                        res.json(nodes.map(normalizeAccountNode))
                       })
-                      .catch(() => {
+                      .catch(error => {
+                        console.log(error)
                         res.status(500).end()
                       })
       })
@@ -37,9 +55,10 @@ router.route('/')
                         })
                       })
                       .then(({ data }) => {
-                        res.json(data)
+                        res.json(data.nodes.map(normalizeAccountNode))
                       })
                       .catch(error => {
+                        console.log(error)
                         res.status(500).end()
                       })
       })
