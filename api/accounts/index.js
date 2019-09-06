@@ -14,6 +14,15 @@ const normalizeAccountNode = (node) => {
   }
 }
 
+const normalizeTransNode = (node) => {
+  return {
+    id: node._id,
+    amount: node.amount,
+    note: node.extra.note,
+    status: node.recent_status.status
+  }
+}
+
 router.route('/')
       .get((req, res) => {
         return synapse.getUser(req.user.synapseId)
@@ -60,6 +69,23 @@ router.route('/')
                       .catch(error => {
                         console.log(error)
                         res.status(500).end()
+                      })
+      })
+
+router.route('/:accountId/transactions')
+      .get((req, res) => {
+        var nodeId = req.params.accountId.trim()
+
+        return synapse.getUser(req.user.synapseId)
+                      .then(user => {
+                        return user.getAllNodeTransactions(nodeId)
+                      })
+                      .then(({ data }) => {
+                        res.json(data.trans.map(normalizeTransNode))
+                      })
+                      .catch(error => {
+                        console.log(error)
+                        req.status(500).end()
                       })
       })
 
