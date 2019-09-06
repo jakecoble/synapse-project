@@ -20,13 +20,16 @@ router.route('/')
       })
       .post((req, res) => {
         var {
-          nickname
+          nickname,
+          checking
         } = req.body
+
+        var type = checking ? 'DEPOSIT-US' : 'IB-DEPOSIT-US'
 
         return synapse.getUser(req.user.synapseId)
                       .then(user => {
                         return user.createNode({
-                          type: 'DEPOSIT-US',
+                          type,
                           info: {
                             nickname,
                             document_id: user.body.documents[0].id
