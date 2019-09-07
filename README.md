@@ -1,3 +1,3 @@
-# Toptal Project
+# Synapse Project
 
-Toptal web app
+Synapse web app

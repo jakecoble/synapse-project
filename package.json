@@ -1,7 +1,7 @@
 {
-  "name": "toptal-base",
+  "name": "synapse-base",
   "version": "0.0.0",
-  "description": "Toptal project",
+  "description": "Synapse project",
   "main": "index.js",
   "author": "Jake Coble <jakecoble@users.noreply.github.com>",
   "license": "MIT",
