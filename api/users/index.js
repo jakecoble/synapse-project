@@ -111,23 +111,24 @@ router.route('/')
                 })
             })
           })
-            .then((user) => {
-              return ejs.renderFile(emailTemplate, {
-                activateUrl: `${req.protocol}://${req.hostname}/users/activate/${user.activationKey}`
-              }).then(template => {
-                return mailer.sendMail({
-                  from: process.env.NM_FROM,
-                  to: user.email,
-                  subject: 'Account Activation',
-                  html: template
-                })
-              })
-            })
+            // We're forgetting about email activation to make things simpler for now.
+            // .then((user) => {
+            //   return ejs.renderFile(emailTemplate, {
+            //     activateUrl: `${req.protocol}://${req.hostname}/users/activate/${user.activationKey}`
+            //   }).then(template => {
+            //     return mailer.sendMail({
+            //       from: process.env.NM_FROM,
+            //       to: user.email,
+            //       subject: 'Account Activation',
+            //       html: template
+            //     })
+            //   })
+            // })
             .then(() => {
-              return res.status(201).json({ message: 'Email sent' })
+              return res.status(201).json({ message: 'Account created' })
             })
             .catch(error => {
-              console.log(error.response.data.error)
+              console.log(error)
               res.status(500).end()
             })
         })

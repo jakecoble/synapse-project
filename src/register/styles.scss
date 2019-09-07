@@ -1,0 +1,25 @@
+.registration {
+    max-width: 500px;
+    padding: 20px;
+    box-shadow: 2px 2px 4px black;
+}
+
+.textInput {
+    display: block;
+    background-color: inherit;
+    border: 1px solid black;
+    padding: 5px;
+    margin: 5px 0 5px 0;
+}
+
+.nameInputs {
+    display: flex;
+
+    input {
+        margin: 0;
+    }
+
+    input:first-child {
+        margin-right: 5px;
+    }
+}

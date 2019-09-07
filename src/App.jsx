@@ -1,8 +1,10 @@
 import React from 'react'
-import { HashRouter as Router, Route } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { HashRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
 
 import Main from './main'
 import Register from './register'
+import Login from './login'
 
 import { hot } from 'react-hot-loader/root'
 
@@ -10,11 +12,25 @@ class App extends React.Component {
   render () {
     return (
       <Router>
-        <Route path="/" exact component={Main}/>
-        <Route path="/register" component={Register}/>
+        <Switch>
+          <Route path="/login" component={Login}/>
+          <Route path="/register" component={Register}/>
+          { this.props.loggedIn ?
+            <Route path="/" exact component={Main}/> :
+            <Redirect to="/login"/>
+          }
+        </Switch>
       </Router>
     )
   }
 }
 
-export default hot(App)
+const mapStateToProps = (state) => {
+  return {
+    loggedIn: !!state.userId
+  }
+}
+
+export default connect(
+  mapStateToProps
+)(hot(App))
