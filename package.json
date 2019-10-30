@@ -29,7 +29,7 @@
     "react-hot-loader": "^4.12.12",
     "react-redux": "^7.1.1",
     "redux": "^4.0.4",
-    "sequelize": "^5.10.0",
+    "sequelize": "^5.15.1",
     "synapsenode": "^1.2.2",
     "yarn": "^1.17.3"
   },
