@@ -31,7 +31,7 @@
     "redux": "^4.0.4",
     "sequelize": "^5.10.0",
     "synapsenode": "^1.2.2",
-    "yarn": "^1.17.3"
+    "yarn": "^1.22.0"
   },
   "devDependencies": {
     "@babel/core": "^7.5.0",
