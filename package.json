@@ -13,7 +13,7 @@
     "@hot-loader/react-dom": "^16.9.0",
     "add": "^2.0.6",
     "axios": "^0.18.0",
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.0",
     "connect-session-sequelize": "^6.0.0",
     "dotenv": "^8.0.0",
     "ejs": "^2.6.2",
