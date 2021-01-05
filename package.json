@@ -12,7 +12,7 @@
   "dependencies": {
     "@hot-loader/react-dom": "^16.9.0",
     "add": "^2.0.6",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "bcrypt": "^3.0.6",
     "connect-session-sequelize": "^6.0.0",
     "dotenv": "^8.0.0",
